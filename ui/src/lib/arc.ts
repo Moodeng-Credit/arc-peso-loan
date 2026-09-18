@@ -19,8 +19,9 @@ export const ARC_USDC_ADDRESS = (import.meta.env.VITE_USDC_ADDRESS ||
 
 export const USDC_DECIMALS = 6;
 
-// PesoLoan contract on Arc — set after deploy via VITE_PESO_LOAN_ADDRESS.
-export const PESO_LOAN_ADDRESS = (import.meta.env.VITE_PESO_LOAN_ADDRESS || '') as `0x${string}`;
+// PesoLoan contract on Arc mainnet (live). Override per-env via VITE_PESO_LOAN_ADDRESS (e.g. local demo).
+export const PESO_LOAN_ADDRESS = (import.meta.env.VITE_PESO_LOAN_ADDRESS ||
+   '0x28D9b4042E1625Fe07eaAaD8BE43E9f7fCa51660') as `0x${string}`;
 
 export const explorerTx = (hash: string) => `${arc.blockExplorers.default.url}/tx/${hash}`;
 export const explorerAddress = (addr: string) => `${arc.blockExplorers.default.url}/address/${addr}`;
