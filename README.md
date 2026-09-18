@@ -3,6 +3,7 @@
 A minimal, working **PHP-denominated microloan settled in USDC on Arc**, by [Moodeng Credit](https://github.com/Moodeng-Credit).
 
 > **Live on Arc mainnet (chain 5042).**
+> App: **https://arc-peso-loan.vercel.app**
 > Contract: **`0x28D9b4042E1625Fe07eaAaD8BE43E9f7fCa51660`**
 > Explorer: https://explorer.arc.io/address/0x28D9b4042E1625Fe07eaAaD8BE43E9f7fCa51660
 > Deploy tx: [`0xccbe99…2a84b2`](https://explorer.arc.io/tx/0xccbe992edfc7d7dd935659064e51947314b2eb068c365b97f70c83d1712a84b2)
@@ -17,8 +18,8 @@ The borrower's obligation is recorded in **pesos (PHP)**; value moves in **USDC*
 
 ## Live
 
+- **App (live):** https://arc-peso-loan.vercel.app
 - **Contract (Arc mainnet, chain 5042):** `0x28D9b4042E1625Fe07eaAaD8BE43E9f7fCa51660` — https://explorer.arc.io/address/0x28D9b4042E1625Fe07eaAaD8BE43E9f7fCa51660
-- **App:** _<Vercel URL after deploy>_
 
 ## Structure
 
