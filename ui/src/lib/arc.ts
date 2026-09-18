@@ -6,10 +6,10 @@ export const arc = defineChain({
    name: 'Arc',
    nativeCurrency: { name: 'USDC', symbol: 'USDC', decimals: 18 },
    rpcUrls: {
-      default: { http: [import.meta.env.VITE_ARC_RPC_URL || 'https://rpc-main-1.archiechain.io'] }
+      default: { http: [import.meta.env.VITE_ARC_RPC_URL || 'https://rpc.mainnet.arc.io'] }
    },
    blockExplorers: {
-      default: { name: 'Arc Scan', url: 'https://explorer.arc.io' }
+      default: { name: 'Arc Explorer', url: 'https://explorer.arc.io' }
    }
 });
 
