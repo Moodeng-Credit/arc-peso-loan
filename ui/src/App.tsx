@@ -44,6 +44,7 @@ export function App() {
    const [loanId, setLoanId] = useState('1');
    const [repayAmount, setRepayAmount] = useState('110');
    const [loan, setLoan] = useState<LoanView | null>(null);
+   const [phpc, setPhpc] = useState<string | null>(null);
 
    const configured = useMemo(() => /^0x[a-fA-F0-9]{40}$/.test(PESO_LOAN_ADDRESS), []);
 
@@ -124,6 +125,7 @@ export function App() {
          });
          await publicClient.waitForTransactionReceipt({ hash });
          setStatus(`Loan created. Tx: ${explorerTx(hash)}`);
+         setPhpc(`₱${principalPHP} disbursed to the borrower as PHPC, cashed out to pesos via Coins.ph.`);
       } catch (e) {
          setStatus((e as Error).message);
       } finally {
@@ -152,6 +154,7 @@ export function App() {
          });
          await publicClient.waitForTransactionReceipt({ hash });
          setStatus(`Repayment sent. Tx: ${explorerTx(hash)}`);
+         setPhpc('Borrower cashed in PHP → PHPC at par via Coins.ph; StableFX settled PHPC → USDC to the lender.');
          await lookup();
       } catch (e) {
          setStatus((e as Error).message);
@@ -188,10 +191,19 @@ export function App() {
             <button className="connect" onClick={connect}>
                {account ? `${account.slice(0, 6)}…${account.slice(-4)}` : 'Connect wallet'}
             </button>
+            <span className="phpc-badge">PHPC settlement · preview (mock)</span>
             {!configured && (
                <p className="warn">Set VITE_PESO_LOAN_ADDRESS to the deployed contract to enable actions.</p>
             )}
          </header>
+
+         {phpc && (
+            <div className="phpc-banner">
+               <span className="tag">PHPC · simulated</span>
+               <span className="msg">{phpc}</span>
+               <button className="x" onClick={() => setPhpc(null)} aria-label="Dismiss">✕</button>
+            </div>
+         )}
 
          <section className="card">
             <h2>1. Create a loan (funder)</h2>
@@ -247,6 +259,10 @@ export function App() {
 
          <footer>
             <p>Contract: {configured ? PESO_LOAN_ADDRESS : 'not set'} · USDC: {ARC_USDC_ADDRESS} · Arc chain {arc.id}</p>
+            <p>
+               On-chain settlement is real USDC. The PHPC / Coins.ph peso leg is <strong>simulated (preview)</strong> —
+               PHPC is not yet live on Arc; those steps are shown to illustrate the intended flow.
+            </p>
          </footer>
       </div>
    );
