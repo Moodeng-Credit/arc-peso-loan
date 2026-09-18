@@ -12,8 +12,8 @@ The borrower's obligation is recorded in **pesos (PHP)**; value moves in **USDC*
 
 ## Live
 
+- **Contract (Arc mainnet, chain 5042):** `0x28D9b4042E1625Fe07eaAaD8BE43E9f7fCa51660` — https://explorer.arc.io/address/0x28D9b4042E1625Fe07eaAaD8BE43E9f7fCa51660
 - **App:** _<Vercel URL after deploy>_
-- **Contract (Arc mainnet):** _<address after deploy>_ — _<Arc explorer link>_
 
 ## Structure
 
