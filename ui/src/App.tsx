@@ -174,27 +174,32 @@ export function App() {
 
          <main className="mx-auto max-w-[960px] px-4 pb-24">
             {/* Hero */}
-            <section className="pb-6 pt-8">
-               <h1 className="text-md-display font-semibold text-md-heading">Microloan Request Board</h1>
-               <p className="mt-2 max-w-[560px] text-md-b1 text-md-neutral-1200">
-                  Peso-denominated microloans, settled in USDC on Arc. Borrowers owe pesos; lenders fund and are repaid in USDC.
-               </p>
-               <div className="mt-4 flex flex-wrap items-center gap-2">
-                  <span className="inline-flex items-center gap-1.5 rounded-md-pill border border-md-green-600 bg-[rgba(0,134,36,0.05)] px-2.5 py-1 text-md-b4 font-semibold text-md-green-600">
-                     <span className="h-1.5 w-1.5 rounded-full bg-md-green-600" /> Live on Arc mainnet
-                  </span>
-                  <a href={explorerAddress(PESO_LOAN_ADDRESS)} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 rounded-md-pill border border-md-neutral-500 bg-white px-2.5 py-1 text-md-b4 font-semibold text-md-neutral-1400 hover:border-md-primary-1200 hover:text-md-primary-1200">
-                     Contract {short(PESO_LOAN_ADDRESS)} ↗
-                  </a>
-                  <span className="inline-flex items-center rounded-md-pill border border-md-green-600 bg-[rgba(0,134,36,0.05)] px-2.5 py-1 text-md-b4 font-semibold text-md-green-600">PHPC settlement · preview (mock)</span>
+            <section className="relative mb-8 mt-6 overflow-hidden rounded-[24px] border border-md-primary-100 bg-gradient-to-br from-md-primary-100 via-md-neutral-100 to-white p-md-5">
+               <div className="flex items-center gap-4">
+                  <div className="max-w-[560px]">
+                     <h1 className="text-md-display font-semibold text-md-heading">Microloan Request Board</h1>
+                     <p className="mt-2 text-md-b1 text-md-neutral-1200">
+                        Peso-denominated microloans, settled in USDC on Arc. Borrowers owe pesos; lenders fund and are repaid in USDC.
+                     </p>
+                     <div className="mt-4 flex flex-wrap items-center gap-2">
+                        <span className="inline-flex items-center gap-1.5 rounded-md-pill border border-md-green-600 bg-[rgba(0,134,36,0.05)] px-2.5 py-1 text-md-b4 font-semibold text-md-green-600">
+                           <span className="h-1.5 w-1.5 rounded-full bg-md-green-600" /> Live on Arc mainnet
+                        </span>
+                        <a href={explorerAddress(PESO_LOAN_ADDRESS)} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 rounded-md-pill border border-md-neutral-500 bg-white px-2.5 py-1 text-md-b4 font-semibold text-md-neutral-1400 hover:border-md-primary-1200 hover:text-md-primary-1200">
+                           Contract {short(PESO_LOAN_ADDRESS)} ↗
+                        </a>
+                        <span className="inline-flex items-center rounded-md-pill border border-md-green-600 bg-[rgba(0,134,36,0.05)] px-2.5 py-1 text-md-b4 font-semibold text-md-green-600">PHPC settlement · preview (mock)</span>
+                     </div>
+                  </div>
+                  <img src="/hippos/hippo-wallet.png" alt="" className="ml-auto hidden h-44 w-44 shrink-0 object-contain md:block" />
                </div>
             </section>
 
             {/* How it works */}
             <section className="mb-8 grid gap-3 sm:grid-cols-3">
-               <StepCard n="1" title="Borrower posts in PHP" body="A loan request is denominated in pesos — the currency the borrower actually earns." />
-               <StepCard n="2" title="Lender funds in USDC" body="Funds settle in USDC on Arc. (StableFX → PHPC to pesos is the production step; simulated here.)" />
-               <StepCard n="3" title="Repay in PHP → USDC" body="The peso obligation is fixed; on repayment the lender receives USDC back." />
+               <StepCard n="1" img="/hippos/hippo-wallet.png" title="Borrower posts in PHP" body="A loan request is denominated in pesos — the currency the borrower actually earns." />
+               <StepCard n="2" img="/hippos/hippo-bridge-swap.png" title="Lender funds in USDC" body="Funds settle in USDC on Arc. (StableFX → PHPC to pesos is the production step; simulated here.)" />
+               <StepCard n="3" img="/hippos/hippo-friendly-lock.png" title="Repay in PHP → USDC" body="The peso obligation is fixed; on repayment the lender receives USDC back." />
             </section>
 
             {phpc && (
@@ -318,10 +323,13 @@ function LoanCard({ id, loan }: { id: number; loan: LoanView }) {
    );
 }
 
-function StepCard({ n, title, body }: { n: string; title: string; body: string }) {
+function StepCard({ n, img, title, body }: { n: string; img: string; title: string; body: string }) {
    return (
       <div className="flex flex-col gap-1.5 rounded-md-lg border border-md-neutral-400 bg-white p-md-3">
-         <span className="flex h-6 w-6 items-center justify-center rounded-md-pill bg-md-primary-100 text-md-b3 font-bold text-md-primary-1200">{n}</span>
+         <div className="mb-1 flex items-center gap-2">
+            <img src={img} alt="" className="h-12 w-12 object-contain" />
+            <span className="flex h-6 w-6 items-center justify-center rounded-md-pill bg-md-primary-100 text-md-b3 font-bold text-md-primary-1200">{n}</span>
+         </div>
          <p className="text-md-b1 font-semibold text-md-heading">{title}</p>
          <p className="text-md-b3 text-md-neutral-1200">{body}</p>
       </div>
