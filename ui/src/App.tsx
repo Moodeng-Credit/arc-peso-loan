@@ -148,7 +148,7 @@ export function App() {
          <nav className="sticky top-0 z-20 border-b border-md-neutral-400 bg-white/85 backdrop-blur">
             <div className="mx-auto flex max-w-[960px] items-center justify-between px-4 py-3">
                <div className="flex items-center gap-2">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-md-md bg-md-primary-1200 text-[13px] font-bold text-white">M</span>
+                  <img src="/brand/moodeng-logo.png" alt="Moodeng Credit" className="h-8 w-8 rounded-md-md object-contain" />
                   <span className="text-md-b1 font-semibold text-md-heading">Moodeng Credit</span>
                   <span className="hidden text-md-b3 text-md-neutral-1200 sm:inline">· Arc</span>
                </div>
